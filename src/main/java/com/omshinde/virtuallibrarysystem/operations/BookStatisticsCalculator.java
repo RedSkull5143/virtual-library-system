@@ -4,10 +4,15 @@ import com.omshinde.virtuallibrarysystem.models.Book;
 import com.omshinde.virtuallibrarysystem.models.Library;
 import com.omshinde.virtuallibrarysystem.models.TransactionLog;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookStatisticsCalculator {
+    private static Library library;
 
+    public BookStatisticsCalculator(Library library) {
+        this.library = library;
+    }
     public static int getTotalBooks(List<Book> books) {
         return books.size();
     }
@@ -49,4 +54,34 @@ public class BookStatisticsCalculator {
         System.out.println("Borrowed Books: " + getBorrowedBooks(lib.log));
         System.out.println("Out of Stock Books: " + getOutOfStockBooks(lib.books));
     }
+
+    // Method to calculate the number of currently borrowed books
+    public static int calculateCurrentlyBorrowedBooksCount() {
+        int count = 0;
+        for (TransactionLog logEntry : library.log) {
+            if (logEntry.getReturned().equalsIgnoreCase("No")) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    // Method to get a list of titles of all borrowed books
+    public static List<String> getAllBorrowedBookTitles() {
+        List<String> borrowedTitles = new ArrayList<>();
+        for (TransactionLog logEntry : library.log) {
+            if (logEntry.getReturned().equalsIgnoreCase("No")) {
+                for (Book book : library.books) {
+                    if (book.getISBN().equals(logEntry.getISBN())) {
+                        borrowedTitles.add(book.getTitle());
+                        break;
+                    }
+                }
+            }else{
+                System.out.println("Books are not Borrrowed");
+            }
+        }
+        return borrowedTitles;
+    }
 }
+

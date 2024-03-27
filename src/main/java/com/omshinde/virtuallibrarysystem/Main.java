@@ -4,6 +4,7 @@ import com.omshinde.virtuallibrarysystem.models.Book;
 import com.omshinde.virtuallibrarysystem.models.Library;
 import com.omshinde.virtuallibrarysystem.operations.*;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -23,6 +24,7 @@ public class Main {
         lib.add(book4);
 
         boolean exit = false;
+        BookStatisticsCalculator statisticsCalculator = new BookStatisticsCalculator(lib);
 
         while (!exit) {
             System.out.println("Main Menu:");
@@ -35,6 +37,8 @@ public class Main {
             System.out.println("7. Books Stastics Overview");
             System.out.println("8. Total No. of Books Present ");
             System.out.println("9. Exit");
+            System.out.println("10. Number of currently borrowed books");
+            System.out.println("11. List of titles of all borrowed books");
             System.out.print("Choose an option: ");
             Scanner scanner=new Scanner(System.in);
             int choice = scanner.nextInt();
@@ -78,6 +82,16 @@ public class Main {
                 case 9:
                     // Exit
                     exit = true;
+                    break;
+                case 10:
+                    System.out.println("Number of currently borrowed books: " + BookStatisticsCalculator.calculateCurrentlyBorrowedBooksCount());
+                    break;
+                case 11:
+                    System.out.println("List of titles of all borrowed books:");
+                    List<String> borrowedTitles = BookStatisticsCalculator.getAllBorrowedBookTitles();
+                    for (String title : borrowedTitles) {
+                        System.out.println(title);
+                    }
                     break;
                 default:
                     System.out.println("Invalid selection. Please try again.");
