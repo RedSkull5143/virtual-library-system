@@ -1,5 +1,6 @@
 package com.omshinde.virtuallibrarysystem.operations;
 
+import com.omshinde.virtuallibrarysystem.analyzers.AuthorTrendAnalyzer;
 import com.omshinde.virtuallibrarysystem.analyzers.GenreTrendAnalyzer;
 import com.omshinde.virtuallibrarysystem.models.Book;
 import com.omshinde.virtuallibrarysystem.models.Library;
@@ -10,10 +11,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BookLender {
-    private Library library;
-    private Scanner sc=new Scanner(System.in);
+    private final Library library;
+    private final Scanner sc=new Scanner(System.in);
     //private TransactionLog log;
-    private BookSearcher search ;
+    private final BookSearcher search ;
     List<Book> books;
     public BookLender(Library lib){
         this.library=lib;
@@ -25,7 +26,7 @@ public class BookLender {
     public void borrowByISBN() {
         System.out.println("Enter the ISBN of book to borrow: ");
         String isbn = sc.next();
-        Book book = search.searchByISBN(isbn,books).stream().findFirst().orElse(null);
+        Book book = BookSearcher.searchByISBN(isbn,books).stream().findFirst().orElse(null);
         if (book != null) {
             System.out.println("the book you have selected is : " + book.getTitle());
             library.showStatus(book);
@@ -50,6 +51,7 @@ public class BookLender {
 
                     System.out.println("The book has been borrowed");
                     GenreTrendAnalyzer.analyzeGenreTrends(library, library.getLog());
+                    AuthorTrendAnalyzer.analyzeAuthorTrends(library,library.getLog());
 
                     book.setNoOfCopies(book.getNoOfCopies() - 1);
                     if (book.getNoOfCopies() < 1) {
@@ -96,7 +98,7 @@ public class BookLender {
                     // logic to return to main menu
                     break;
                 case 2:
-                    search.search();
+                    BookSearcher.search();
                     break;
                 case 3:
                     System.out.println("Exiting system. Thank you for using our library!");

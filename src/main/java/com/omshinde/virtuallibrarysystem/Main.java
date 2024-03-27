@@ -1,5 +1,6 @@
 package com.omshinde.virtuallibrarysystem;
 
+import com.omshinde.virtuallibrarysystem.analyzers.AuthorTrendAnalyzer;
 import com.omshinde.virtuallibrarysystem.analyzers.BorrowingTrendAnalyzer;
 import com.omshinde.virtuallibrarysystem.analyzers.GenreTrendAnalyzer;
 import com.omshinde.virtuallibrarysystem.models.Book;
@@ -43,6 +44,7 @@ public class Main {
             System.out.println("11. List of titles of all borrowed books");
             System.out.println("12. Analyze Borrowing Trends per Month ");
             System.out.println("13. View Trending Genres");
+            System.out.println("14. View Trending Authors ");
             System.out.print("Choose an option: ");
             Scanner scanner=new Scanner(System.in);
             int choice = scanner.nextInt();
@@ -104,6 +106,9 @@ public class Main {
                     break;
                 case 13:
                     GenreTrendAnalyzer.analyzeGenreTrends(lib, lib.getLog());
+                    break;
+                case 14:
+                    AuthorTrendAnalyzer.analyzeAuthorTrends(lib,lib.getLog());
                     break;
                 default:
                     System.out.println("Invalid selection. Please try again.");
