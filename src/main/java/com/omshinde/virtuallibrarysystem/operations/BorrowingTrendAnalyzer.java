@@ -39,7 +39,9 @@ public class BorrowingTrendAnalyzer {
         for (int i = 0; i < 12; i++) {
             Month month = Month.of(i + 1);
             int borrowingCount = borrowingCounts[i];
-            System.out.println(month.toString() + ": " + borrowingCount + " books borrowed");
+            if (borrowingCount > 0) {
+                System.out.println(month.toString() + ": " + borrowingCount + " books borrowed");
+            }
         }
     }
 }
