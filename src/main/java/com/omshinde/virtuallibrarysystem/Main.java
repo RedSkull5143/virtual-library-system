@@ -39,6 +39,7 @@ public class Main {
             System.out.print("Choose an option: ");
             Scanner scanner=new Scanner(System.in);
             int choice = scanner.nextInt();
+            int sw;
 
             switch (choice) {
                 case 1:
