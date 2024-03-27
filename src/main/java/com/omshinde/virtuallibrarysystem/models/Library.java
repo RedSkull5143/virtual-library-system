@@ -11,8 +11,6 @@ import java.util.Scanner;
 
 public class Library {
 
-
-
     public  List<Book> books = new ArrayList<>();
     private ISBNChecker check = new ISBNChecker();
     public List<TransactionLog> log = new ArrayList<>();
@@ -58,8 +56,8 @@ public class Library {
 
     public void viewLog() {
         for (TransactionLog lg : log) {
-            System.out.println("UserID : " + lg.getUserId() + "," + "ISBN : " + lg.getISBN() + "," +"Borrowed : "+lg.getBorrowed()+","+ "Borrow Date : " + lg.getBorrowDate()
-            +","+"Returned : "+lg.getReturned()+","+"Return Date : "+lg.getReturnDate());
+            String status = (lg.getReturned().equalsIgnoreCase("Yes") ? "Returned" : "Borrowed");
+            System.out.println("UserID : " + lg.getUserId() + ", ISBN : " + lg.getISBN() + ", Status: " + status + ", Borrow Date : " + lg.getBorrowDate() + ", Return Date : " + lg.getReturnDate());
         }
     }
 
