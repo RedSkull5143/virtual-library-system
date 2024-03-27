@@ -1,5 +1,4 @@
-package com.omshinde.virtuallibrarysystem.operations;
-
+package com.omshinde.virtuallibrarysystem.analyzers;
 import com.omshinde.virtuallibrarysystem.models.Library;
 import com.omshinde.virtuallibrarysystem.models.TransactionLog;
 
