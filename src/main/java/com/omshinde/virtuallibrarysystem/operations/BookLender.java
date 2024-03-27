@@ -13,13 +13,12 @@ import java.util.Scanner;
 public class BookLender {
     private final Library library;
     private final Scanner sc=new Scanner(System.in);
-    //private TransactionLog log;
-    private final BookSearcher search ;
     List<Book> books;
     public BookLender(Library lib){
         this.library=lib;
         this.books=lib.books;
-        this.search=new BookSearcher(lib);
+        //private TransactionLog log;
+        BookSearcher search = new BookSearcher(lib);
     }
 
 
