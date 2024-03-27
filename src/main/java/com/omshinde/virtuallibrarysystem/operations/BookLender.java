@@ -18,7 +18,6 @@ public class BookLender {
         this.library=lib;
         this.books=lib.books;
         //private TransactionLog log;
-        BookSearcher search = new BookSearcher(lib);
     }
 
 
