@@ -1,12 +1,11 @@
 package com.omshinde.virtuallibrarysystem.models;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class Book {
     private String Title, Author, ISBN, Genre;
     private LocalDate Publication_Date;
-    private int noOfCopies;
+    private int noOfCopies, borrowCount;
     private String status;
     public Book(String Title,String Author,String ISBN,String Genre ,LocalDate Publication_Date,int noOfCopies){
         this.Title=Title;
@@ -15,6 +14,7 @@ public class Book {
         this.Genre=Genre;
         this.Publication_Date=Publication_Date;
         this.noOfCopies=noOfCopies;
+        this.borrowCount=0;
     }
 
     public Book(String Title,String Author,String ISBN,String Genre ,LocalDate Publication_Date){
@@ -87,6 +87,14 @@ public class Book {
     public void setStatus(String status) {
         this.status = status;
     }
+    public int getBorrowCount() {
+        return borrowCount;
+    }
+
+    public void setBorrowCount(int borrowCount) {
+        this.borrowCount = borrowCount;
+    }
+
 }
 
 

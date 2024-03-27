@@ -24,7 +24,6 @@ public class Main {
         lib.add(book4);
 
         boolean exit = false;
-        BookStatisticsCalculator statisticsCalculator = new BookStatisticsCalculator(lib);
 
         while (!exit) {
             System.out.println("Main Menu:");
@@ -39,6 +38,7 @@ public class Main {
             System.out.println("9. Exit");
             System.out.println("10. Number of currently borrowed books");
             System.out.println("11. List of titles of all borrowed books");
+            System.out.println("12. Analyze Borrowing Trends per Month ");
             System.out.print("Choose an option: ");
             Scanner scanner=new Scanner(System.in);
             int choice = scanner.nextInt();
@@ -92,6 +92,9 @@ public class Main {
                     for (String title : borrowedTitles) {
                         System.out.println(title);
                     }
+                    break;
+                case 12:
+                    BorrowingTrendAnalyzer.analyzeBorrowingTrendsPerMonth(lib);
                     break;
                 default:
                     System.out.println("Invalid selection. Please try again.");

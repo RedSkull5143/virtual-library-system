@@ -1,23 +1,13 @@
 package com.omshinde.virtuallibrarysystem.models;
-
-
 import com.omshinde.virtuallibrarysystem.isbn.ISBNChecker;
-
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-
-import java.util.Scanner;
 
 public class Library {
 
     public  List<Book> books = new ArrayList<>();
     private ISBNChecker check = new ISBNChecker();
     public List<TransactionLog> log = new ArrayList<>();
-
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    Scanner sc = new Scanner(System.in);
-
 
     public Library() {
         this.books = new ArrayList<>();
@@ -71,4 +61,7 @@ public class Library {
     }
 
 
+    public List<TransactionLog> getLog() {
+        return log;
+    }
 }

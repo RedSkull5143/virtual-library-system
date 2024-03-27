@@ -10,9 +10,10 @@ import java.util.List;
 public class BookStatisticsCalculator {
     private static Library library;
 
-    public BookStatisticsCalculator(Library library) {
-        this.library = library;
-    }
+//    public BookStatisticsCalculator(Library library) {
+//        this.library = library;
+//    }
+
     public static int getTotalBooks(List<Book> books) {
         return books.size();
     }
@@ -55,7 +56,6 @@ public class BookStatisticsCalculator {
         System.out.println("Out of Stock Books: " + getOutOfStockBooks(lib.books));
     }
 
-    // Method to calculate the number of currently borrowed books
     public static int calculateCurrentlyBorrowedBooksCount() {
         int count = 0;
         for (TransactionLog logEntry : library.log) {
@@ -66,7 +66,6 @@ public class BookStatisticsCalculator {
         return count;
     }
 
-    // Method to get a list of titles of all borrowed books
     public static List<String> getAllBorrowedBookTitles() {
         List<String> borrowedTitles = new ArrayList<>();
         for (TransactionLog logEntry : library.log) {
@@ -77,11 +76,10 @@ public class BookStatisticsCalculator {
                         break;
                     }
                 }
-            }else{
-                System.out.println("Books are not Borrrowed");
+            } else {
+                System.out.println("Books are not Borrowed");
             }
         }
         return borrowedTitles;
     }
 }
-
