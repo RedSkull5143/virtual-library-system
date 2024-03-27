@@ -95,6 +95,8 @@ public class Main {
                     break;
                 case 12:
                     BorrowingTrendAnalyzer.analyzeBorrowingTrendsPerMonth(lib);
+                    BorrowingTrendAnalyzer.analyzeBorrowingTrendsPerQuarter(lib);
+                    BorrowingTrendAnalyzer.analyzeBorrowingTrendsPerYear(lib,2024);
                     break;
                 default:
                     System.out.println("Invalid selection. Please try again.");

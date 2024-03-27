@@ -68,17 +68,20 @@ public class BookStatisticsCalculator {
 
     public static List<String> getAllBorrowedBookTitles() {
         List<String> borrowedTitles = new ArrayList<>();
+        boolean booksBorrowed = false;
         for (TransactionLog logEntry : library.log) {
             if (logEntry.getReturned().equalsIgnoreCase("No")) {
+                booksBorrowed = true;
                 for (Book book : library.books) {
                     if (book.getISBN().equals(logEntry.getISBN())) {
                         borrowedTitles.add(book.getTitle());
                         break;
                     }
                 }
-            } else {
-                System.out.println("Books are not Borrowed");
             }
+        }
+        if (!booksBorrowed) {
+            System.out.println("No books are currently borrowed.");
         }
         return borrowedTitles;
     }
