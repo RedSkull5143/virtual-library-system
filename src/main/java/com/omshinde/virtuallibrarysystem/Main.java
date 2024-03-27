@@ -33,8 +33,8 @@ public class Main {
             System.out.println("5. View Transaction Log");
             System.out.println("6. Upload Books");
             System.out.println("7. Books Stastics Overview");
-            System.out.println("9. Total No. of Books Present ");
-            System.out.println("8. Exit");
+            System.out.println("8. Total No. of Books Present ");
+            System.out.println("9. Exit");
             System.out.print("Choose an option: ");
             Scanner scanner=new Scanner(System.in);
             int choice = scanner.nextInt();
