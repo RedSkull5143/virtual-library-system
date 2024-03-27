@@ -1,5 +1,6 @@
 package com.omshinde.virtuallibrarysystem.operations;
 
+import com.omshinde.virtuallibrarysystem.analyzers.GenreTrendAnalyzer;
 import com.omshinde.virtuallibrarysystem.models.TransactionLog;
 import com.omshinde.virtuallibrarysystem.models.Book;
 import com.omshinde.virtuallibrarysystem.models.Library;
@@ -12,7 +13,6 @@ public class BookReturner {
 
 
     private Library library;
-    private TransactionLog lg;
     List<TransactionLog> log;
     List<Book> books;
     Scanner sc = new Scanner(System.in);
@@ -48,6 +48,8 @@ public class BookReturner {
                             l.setReturnDate(LocalDate.now());
 
                             flag = true;
+                            GenreTrendAnalyzer.analyzeGenreTrends(library, library.getLog());
+
                         } else {
                             System.out.println("Thank You");
                             System.exit(0);
