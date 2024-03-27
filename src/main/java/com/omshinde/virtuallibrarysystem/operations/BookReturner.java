@@ -48,7 +48,6 @@ public class BookReturner {
                             l.setReturnDate(LocalDate.now());
 
                             flag = true;
-                            GenreTrendAnalyzer.analyzeGenreTrends(library, library.getLog());
 
                         } else {
                             System.out.println("Thank You");
@@ -60,6 +59,7 @@ public class BookReturner {
             }
             if (flag) {
                 System.out.println("Book returned succesfully");
+                GenreTrendAnalyzer.analyzeGenreTrends(library, library.getLog());
 
             } else {
                 System.out.println("No log record Exists");
