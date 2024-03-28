@@ -1,6 +1,6 @@
 package com.omshinde.virtuallibrarysystem.operations;
 
-import com.omshinde.virtuallibrarysystem.analyzers.AuthorTrendAnalyzer;
+import com.omshinde.virtuallibrarysystem.analyzers.PopularAuthorAnalyzer;
 import com.omshinde.virtuallibrarysystem.analyzers.GenreTrendAnalyzer;
 import com.omshinde.virtuallibrarysystem.models.TransactionLog;
 import com.omshinde.virtuallibrarysystem.models.Book;
@@ -61,7 +61,7 @@ public class BookReturner {
             if (flag) {
                 System.out.println("Book returned succesfully");
                 GenreTrendAnalyzer.analyzeGenreTrends(library, library.getLog());
-                AuthorTrendAnalyzer.analyzeAuthorTrends(library,library.getLog());
+                PopularAuthorAnalyzer.analyzeAuthorTrends(library,library.getLog());
 
             } else {
                 System.out.println("No log record Exists");

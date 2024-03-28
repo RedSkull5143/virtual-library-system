@@ -1,6 +1,6 @@
 package com.omshinde.virtuallibrarysystem.operations;
 
-import com.omshinde.virtuallibrarysystem.analyzers.AuthorTrendAnalyzer;
+import com.omshinde.virtuallibrarysystem.analyzers.PopularAuthorAnalyzer;
 import com.omshinde.virtuallibrarysystem.analyzers.GenreTrendAnalyzer;
 import com.omshinde.virtuallibrarysystem.models.Book;
 import com.omshinde.virtuallibrarysystem.models.Library;
@@ -49,7 +49,7 @@ public class BookLender {
 
                     System.out.println("The book has been borrowed");
                     GenreTrendAnalyzer.analyzeGenreTrends(library, library.getLog());
-                    AuthorTrendAnalyzer.analyzeAuthorTrends(library,library.getLog());
+                    PopularAuthorAnalyzer.analyzeAuthorTrends(library,library.getLog());
 
                     book.setNoOfCopies(book.getNoOfCopies() - 1);
                     if (book.getNoOfCopies() < 1) {

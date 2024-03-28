@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class AuthorTrendAnalyzer {
+public class PopularAuthorAnalyzer {
 
     public static void analyzeAuthorTrends(Library library, List<TransactionLog> logs) {
         Map<String, Integer> authorPopularity = calculateAuthorPopularity(library.getBooks(), logs);
