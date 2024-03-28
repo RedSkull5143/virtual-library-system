@@ -15,14 +15,17 @@ public class BookUploader {
     private int booksAdded = 0;
     private int booksSkipped = 0;
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private ISBNChecker check ;
-    private Library library;
+    private final ISBNChecker check ;
+    private final Library library;
 
-//    private static final String filepath="src/main/resources/dataset.csv";
+    public BookUploader(ISBNChecker isbnChecker, Library lib) {
+        this.check = isbnChecker;
+        this.library = lib;
+    }
 
-    public void uploadBook(String filepath) {
+    public void uploadBook(String FILE_PATH) {
         try {
-            processBook(filepath);
+            processBook(FILE_PATH);
 
         } catch (IOException e) {
             e.printStackTrace();
