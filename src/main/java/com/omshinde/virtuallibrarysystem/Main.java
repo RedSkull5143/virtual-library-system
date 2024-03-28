@@ -7,10 +7,8 @@ import com.omshinde.virtuallibrarysystem.analyzers.GenreTrendAnalyzer;
 import com.omshinde.virtuallibrarysystem.models.Book;
 import com.omshinde.virtuallibrarysystem.models.Library;
 import com.omshinde.virtuallibrarysystem.operations.*;
-
 import java.util.List;
 import java.util.Scanner;
-
 
 public class Main {
     public static void main(String[] args) {
@@ -76,15 +74,17 @@ public class Main {
                     break;
                 case 6:
                     // Upload Books
-                    BookUploader bookUploader = new BookUploader();
                     System.out.println("Enter the file path of the CSV containing book data: ");
                     String filePath = scanner.nextLine().trim();
+                    BookUploader bookUploader = new BookUploader();
                     bookUploader.uploadBook(filePath);
                     break;
                 case 7:
+                    // Display Library Status
                     BookStatisticsCalculator.displayLibraryStatistics(lib);
                     break;
                 case 8:
+                    // Display Total No. of Books
                     System.out.println(BookStatisticsCalculator.getTotalBooks(lib.books));
                     break;
                 case 9:
@@ -92,9 +92,11 @@ public class Main {
                     exit = true;
                     break;
                 case 10:
+                    // Display No. of Current Borrowed Books
                     System.out.println("Number of currently borrowed books: " + BookStatisticsCalculator.calculateCurrentlyBorrowedBooksCount());
                     break;
                 case 11:
+                    // Dispaly Titles of Borrowed Books
                     System.out.println("List of titles of all borrowed books:");
                     List<String> borrowedTitles = BookStatisticsCalculator.getAllBorrowedBookTitles();
                     for (String title : borrowedTitles) {
@@ -102,17 +104,21 @@ public class Main {
                     }
                     break;
                 case 12:
+                    // Display Borrowing Trends PerMonth, PerQuarter, PerYear
                     BorrowingTrendAnalyzer.analyzeBorrowingTrendsPerMonth(lib);
                     BorrowingTrendAnalyzer.analyzeBorrowingTrendsPerQuarter(lib);
                     BorrowingTrendAnalyzer.analyzeBorrowingTrendsPerYear(lib,2024);
                     break;
                 case 13:
+                    // Display Trends in Genre
                     GenreTrendAnalyzer.analyzeGenreTrends(lib, lib.getLog());
                     break;
                 case 14:
+                    // Display Popular Authors
                     PopularAuthorAnalyzer.analyzeAuthorTrends(lib,lib.getLog());
                     break;
                 case 15:
+                    // Display High Grossing Books
                     System.out.println("Display Top - ");
                     int limit=scanner.nextInt();
                     MostBorrowedBooksAnalyzer.analyzeMostBorrowedBooks(lib,limit);
