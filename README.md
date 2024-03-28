@@ -3,31 +3,27 @@
 <h2>Features</h2>
 <h3>📕Book Management</h3>
 <ul>
-  <h4>Add Books</h4>
+  <h4>➕ Add Books ➕</h4>
   <li>Allow the addition of new books to the library's inventory.</li>
   <li>Capture essential details: Title , Author , ISBN , Genre , Publication Date , and Number of Copies.</li>
   <li>Ensure that the ISBN is Unique, acting as a Primary Identifier for each book.</li>
   <li>Allow batch uploads where multiple books can be added at once, perhaps from a CSV or similar file format.</li>
 
-  <h4>📕Search & View Books</h4>
+  <h4>🔍 Search & View Books 🔍</h4>
   <li>Provide a Search Functionality using various Criteria like Title , Author or ISBN.</li>
   <li>Display Detailed views of Individual Books, showing all their attributes and current availability.</li>
 </ul>
 
-<h4>Transaction Management</h4>
-2. 
+<h3>Transaction Management</h3>
+<ul>
+  <h4>📔 Borrow Books 📔</h4>
+  <li>Facilitate the Borrowing process using a book's ISBN.</li>
+  <li>Log Details of the Borrowing Transaction, including the userID and Date of Borrowing.</li>
+  <li>Update the inventory to reflect the decreased count of available copies.</li>
+  <li>Ensure an error prompt if a user tries to borrow a book that's currently unavailable.</li>
+  <li>Allow the addition of new books to the library's inventory.</li>
+</ul>
 
-Borrow Books:
-
-Facilitate the borrowing process using a book's ISBN.
-
-Log details of the borrowing transaction, including the user ID and date of borrowing.
-
-Update the inventory to reflect the decreased count of available copies.
-
-Ensure an error prompt if a user tries to borrow a book that's currently unavailable.
-
-Allow the addition of new books to the library's inventory.
 
 Return Books:
 
