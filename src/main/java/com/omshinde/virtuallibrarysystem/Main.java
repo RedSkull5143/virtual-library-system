@@ -13,26 +13,24 @@ public class Main {
         Library lib=new Library();
 
         boolean exit = false;
-//        BookSearcher searcher = new BookSearcher(lib);
+        BookSearcher searcher = new BookSearcher(lib);
 
 
-        System.out.println("📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔");
-        System.out.println("📚  Virtual Library Management System (VLS)  📚`");
+        System.out.println("📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📗📘");
+        System.out.println("📚          Virtual Library Management System (VLS)        📚`");
 
         while (!exit) {
-            System.out.println("📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔");
-            System.out.println("1. Search for a book");
-            System.out.println("2. 🚚 Borrow a book");
-            System.out.println("3. Return a book");
-            System.out.println("4. 📫 View Library Inventory");
-            System.out.println("5. 💾 View Transaction Log");
-            System.out.println("6. 👆 Upload Books");
-            System.out.println("7. Books Statistics Overview");
-            System.out.println("8. Analyzers");
+            System.out.println("📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📗📘");
+            System.out.println("1. Search for a book            \t2. 🚚 Borrow a book");
+            System.out.println("3. Return a book                \t4. 📫 View Library Inventory");
+            System.out.println("5. 💾 View Transaction Log      \t6. 👆 Upload Books");
+            System.out.println("7. Books Statistics Overview    \t8. Analyzers");
             System.out.println("9. Exit");
+            System.out.println("------------------------------------------------------------------");
             System.out.print("Choose an option: ");
             Scanner scanner = new Scanner(System.in);
             int choice = scanner.nextInt();
+            System.out.println("------------------------------------------------------------------");
 
             switch (choice) {
                 case 1:

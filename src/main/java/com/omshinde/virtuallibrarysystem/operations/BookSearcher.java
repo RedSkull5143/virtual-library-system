@@ -27,7 +27,7 @@ public class BookSearcher {
 
         List<Book> result = new ArrayList<>();
         if (books.isEmpty()) {
-            System.out.println("Library is Empty. Please add books");
+            System.err.println("Library is Empty. Please add books");
         } else {
 
 

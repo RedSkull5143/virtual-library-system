@@ -97,7 +97,6 @@ public class BookLender {
 
             switch (option) {
                 case 1:
-                    // logic to return to main menu
                     break;
                 case 2:
                     BookSearcher.search();
