@@ -14,7 +14,7 @@
   <li>Display Detailed views of Individual Books, showing all their attributes and current availability.</li>
 </ul>
 
-<h3>Transaction Management</h3>
+<h3>🖥Transaction Management</h3>
 <ul>
   <h4>📔 Borrow Books 📔</h4>
   <li>Facilitate the Borrowing process using a book's ISBN.</li>
