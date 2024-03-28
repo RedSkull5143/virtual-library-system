@@ -1,6 +1,6 @@
 <h1><u><b>📚Virtual Library Management System📚</b></u><br></h1>
 
-<h2>Features</h2>
+<h2>🎁Features</h2>
 <h3>📕Book Management</h3>
 <ul>
   <h4>➕ Add Books ➕</h4>
