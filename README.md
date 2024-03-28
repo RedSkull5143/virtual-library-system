@@ -1,4 +1,4 @@
-<u><b>Virtual Library Management System</b></u><br>
+<h1><u><b>Virtual Library Management System</b></u><br></h1>
 Features
 
 1. Book Management
