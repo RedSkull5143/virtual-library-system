@@ -1,17 +1,23 @@
 <h1><u><b>📚Virtual Library Management System📚</b></u><br></h1>
 
 <h2>Features</h2>
-1. Book Management
+<h4>Book Management</h4>
+<ul>
+  <li>Add Books</li>
+  <li>Allow the addition of new books to the library's inventory.</li>
+  <li>Capture essential details: title , author , ISBN , genre , publication date , and number of copies.</li>
+  <li>Ensure that the ISBN is unique, acting as a primary identifier for each book.</li>
+  <li>Allow batch uploads where multiple books can be added at once, perhaps from a CSV or similar file format.</li>
+</ul>
 
-Add Books
 
-Allow the addition of new books to the library's inventory.
 
-Capture essential details: title , author , ISBN , genre , publication date , and number of copies.
 
-Ensure that the ISBN is unique, acting as a primary identifier for each book.
 
-Allow batch uploads where multiple books can be added at once, perhaps from a CSV or similar file format.
+
+
+
+
 
 Search & View Books
 
