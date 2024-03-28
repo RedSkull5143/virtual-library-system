@@ -47,7 +47,8 @@ public class BookReturner {
                             }
                             l.setReturned("Yes");
                             l.setReturnDate(LocalDate.now());
-
+                            GenreTrendAnalyzer.analyzeGenreTrends(library, library.getLog());
+                            PopularAuthorAnalyzer.analyzeAuthorTrends(library,library.getLog());
                             flag = true;
 
                         } else {
@@ -60,8 +61,7 @@ public class BookReturner {
             }
             if (flag) {
                 System.out.println("Book returned succesfully");
-                GenreTrendAnalyzer.analyzeGenreTrends(library, library.getLog());
-                PopularAuthorAnalyzer.analyzeAuthorTrends(library,library.getLog());
+
 
             } else {
                 System.out.println("No log record Exists");
