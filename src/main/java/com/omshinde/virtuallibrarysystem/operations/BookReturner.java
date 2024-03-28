@@ -33,9 +33,7 @@ public class BookReturner {
         boolean flag = false;
         for (TransactionLog l : log) {
             if (l.getUserId() == UserID && l.getISBN().equalsIgnoreCase(isbn)) {
-
                 for (Book bk : books) {
-
                     if (bk.getISBN().equalsIgnoreCase(isbn)) {
                         System.out.println("The book you want to return is : " + bk.getTitle());
                         System.out.println("Confirm to proceed(Y/N) :");
@@ -50,24 +48,19 @@ public class BookReturner {
                             GenreTrendAnalyzer.analyzeGenreTrends(library, library.getLog());
                             PopularAuthorAnalyzer.analyzeAuthorTrends(library,library.getLog());
                             flag = true;
-
+                            System.out.println("Book returned successfully");
                         } else {
                             System.out.println("Thank You");
-                            System.exit(0);
+                            return; // Return to main menu
                         }
                     }
                 }
-
-            }
-            if (flag) {
-                System.out.println("Book returned succesfully");
-
-
-            } else {
-                System.out.println("No log record Exists");
             }
         }
-
+        if (!flag) {
+            System.out.println("No log record Exists");
+        }
     }
+
 
 }

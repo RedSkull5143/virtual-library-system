@@ -13,6 +13,10 @@ import java.util.stream.Collectors;
 public class GenreTrendAnalyzer {
 
     public static void analyzeGenreTrends(Library library, List<TransactionLog> logs) {
+        if (logs.isEmpty()) {
+            System.out.println("No logs present to analyze");
+            return;
+        }
         Map<String, Integer> genrePopularity = calculateGenrePopularity(library.getBooks(), logs);
         printGenrePopularity(genrePopularity);
     }

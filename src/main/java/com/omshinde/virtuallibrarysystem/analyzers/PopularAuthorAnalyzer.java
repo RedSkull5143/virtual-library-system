@@ -12,6 +12,10 @@ import java.util.stream.Collectors;
 public class PopularAuthorAnalyzer {
 
     public static void analyzeAuthorTrends(Library library, List<TransactionLog> logs) {
+        if (logs.isEmpty()) {
+            System.out.println("No logs present to analyze");
+            return;
+        }
         Map<String, Integer> authorPopularity = calculateAuthorPopularity(library.getBooks(), logs);
         printAuthorPopularity(authorPopularity);
     }

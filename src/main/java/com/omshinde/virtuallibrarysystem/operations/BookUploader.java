@@ -15,7 +15,7 @@ public class BookUploader {
     private int booksAdded = 0;
     private int booksSkipped = 0;
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private final ISBNChecker check ;
+    private final ISBNChecker check;
     private final Library library;
 
     public BookUploader(ISBNChecker isbnChecker, Library lib) {
@@ -26,18 +26,15 @@ public class BookUploader {
     public void uploadBook(String FILE_PATH) {
         try {
             processBook(FILE_PATH);
-
+            // Display summary after processing books
+            System.out.println("Books added: " + booksAdded);
+            System.out.println("Books skipped due to duplicate ISBNs: " + booksSkipped);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        System.out.println("Books added: " + booksAdded);
-        System.out.println("Books skipped due to duplicate ISBNs: " + booksSkipped);
     }
 
-
     public void processBook(String filepath) throws IOException {
-
         BufferedReader reader = new BufferedReader(new FileReader(filepath));
         String line;
         while ((line = reader.readLine()) != null) {
@@ -54,17 +51,15 @@ public class BookUploader {
 
                 // Check uniqueness of ISBN
                 if (check.isISBNUnique(book.getISBN(), library.books)) {
-                    library.books.add(book);
-                    // Add book to collection
-
+                    library.books.add(book); // Add book to library's collection
                     System.out.println("Added book: " + book.getTitle());
                     booksAdded++;
                 } else {
-                    // ISBN is a duplicate
                     System.out.println("Skipped duplicate ISBN: " + book.getTitle());
                     booksSkipped++;
                 }
             }
         }
+        reader.close(); // Close the reader after processing
     }
 }

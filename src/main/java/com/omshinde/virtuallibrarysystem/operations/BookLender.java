@@ -13,15 +13,19 @@ import java.util.Scanner;
 public class BookLender {
     private final Library library;
     private final Scanner sc=new Scanner(System.in);
+
     List<Book> books;
     public BookLender(Library lib){
         this.library=lib;
         this.books=lib.books;
-        //private TransactionLog log;
-    }
+     }
 
 
     public void borrowByISBN() {
+        if(books.isEmpty()){
+            System.out.println("Books not available. First add Book to Borrow");
+        }else{
+
         System.out.println("Enter the ISBN of book to borrow: ");
         String isbn = sc.next();
         Book book = BookSearcher.searchByISBN(isbn,books).stream().findFirst().orElse(null);
@@ -65,7 +69,7 @@ public class BookLender {
         } else {
             System.out.println("Book with given ISBN not found");
         }
-    }
+    }}
 
     public void OverdueNotification(int UserId,Book book){
         for(TransactionLog lg: library.log){

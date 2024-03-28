@@ -45,19 +45,25 @@ public class Library {
     //-----------------------------------------------------------------------------------------------
 
     public void viewLog() {
+        if(books.isEmpty()){
+            System.err.println("Inventory is Empty. No logs present!");
+        }else{
         for (TransactionLog lg : log) {
             String status = (lg.getReturned().equalsIgnoreCase("Yes") ? "Returned" : "Borrowed");
             System.out.println("UserID : " + lg.getUserId() + ", ISBN : " + lg.getISBN() + ", Status: " + status + ", Borrow Date : " + lg.getBorrowDate() + ", Return Date : " + lg.getReturnDate());
         }
-    }
+    }}
 
     //----------------------------------------------------------------------------------------------------
 
 
     public void bookInventory() {
+        if(books.isEmpty()){
+            System.err.println("Inventory is Empty. Add Books");
+        }else{
         for (Book bk : books) {
             System.out.println("Title : " + bk.getTitle() +" , "+ "No of copies : " + bk.getNoOfCopies());
-        }
+        }}
     }
 
     public List<Book> getBooks() {

@@ -3,16 +3,10 @@ package com.omshinde.virtuallibrarysystem.operations;
 import com.omshinde.virtuallibrarysystem.models.Book;
 import com.omshinde.virtuallibrarysystem.models.Library;
 import com.omshinde.virtuallibrarysystem.models.TransactionLog;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookStatisticsCalculator {
-    private static Library library;
-
-//    public BookStatisticsCalculator(Library library) {
-//        this.library = library;
-//    }
 
     public static int getTotalBooks(List<Book> books) {
         return books.size();
@@ -56,9 +50,9 @@ public class BookStatisticsCalculator {
         System.out.println("Out of Stock Books: " + getOutOfStockBooks(lib.books));
     }
 
-    public static int calculateCurrentlyBorrowedBooksCount() {
+    public static int calculateCurrentlyBorrowedBooksCount(List<TransactionLog> logs) {
         int count = 0;
-        for (TransactionLog logEntry : library.log) {
+        for (TransactionLog logEntry : logs) {
             if (logEntry.getReturned().equalsIgnoreCase("No")) {
                 count++;
             }
@@ -66,13 +60,13 @@ public class BookStatisticsCalculator {
         return count;
     }
 
-    public static List<String> getAllBorrowedBookTitles() {
+    public static List<String> getAllBorrowedBookTitles(List<TransactionLog> logs,List<Book> books) {
         List<String> borrowedTitles = new ArrayList<>();
         boolean booksBorrowed = false;
-        for (TransactionLog logEntry : library.log) {
+        for (TransactionLog logEntry : logs) {
             if (logEntry.getReturned().equalsIgnoreCase("No")) {
                 booksBorrowed = true;
-                for (Book book : library.books) {
+                for (Book book :books) {
                     if (book.getISBN().equals(logEntry.getISBN())) {
                         borrowedTitles.add(book.getTitle());
                         break;

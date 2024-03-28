@@ -13,6 +13,8 @@ public class Main {
         Library lib=new Library();
 
         boolean exit = false;
+//        BookSearcher searcher = new BookSearcher(lib);
+
 
         System.out.println("📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔");
         System.out.println("📚  Virtual Library Management System (VLS)  📚`");
@@ -67,7 +69,7 @@ public class Main {
                     // Books Statistics Overview
                     while (true) {
                         System.out.println("\nBooks Statistics Overview:");
-                        System.out.println("1. View Library Inventory");
+                        System.out.println("1. Show All Books ");
                         System.out.println("2. Total No. of Books Present");
                         System.out.println("3. Number of currently borrowed books");
                         System.out.println("4. List of titles of all borrowed books");
@@ -77,17 +79,17 @@ public class Main {
 
                         switch (statsChoice) {
                             case 1:
-                                lib.bookInventory();
+                                BookStatisticsCalculator.displayLibraryStatistics(lib);
                                 break;
                             case 2:
                                 System.out.println("Total number of books present: " + BookStatisticsCalculator.getTotalBooks(lib.books));
                                 break;
                             case 3:
-                                System.out.println("Number of currently borrowed books: " + BookStatisticsCalculator.calculateCurrentlyBorrowedBooksCount());
+                                System.out.println("Number of currently borrowed books: " + BookStatisticsCalculator.calculateCurrentlyBorrowedBooksCount(lib.log));
                                 break;
                             case 4:
                                 System.out.println("List of titles of all borrowed books:");
-                                List<String> borrowedTitles = BookStatisticsCalculator.getAllBorrowedBookTitles();
+                                List<String> borrowedTitles = BookStatisticsCalculator.getAllBorrowedBookTitles(lib.log,lib.books);
                                 for (String title : borrowedTitles) {
                                     System.out.println(title);
                                 }
@@ -153,7 +155,9 @@ public class Main {
                     break;
                 case 9:
                     // Exit
-                    System.out.println("Thank You for Visitng. Come Back Soon 😊");
+                    System.out.println("📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔");
+                    System.out.println("📔\tThank You for Visitng. Come Back Soon😊  📕");
+                    System.out.println("📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔");
                     exit = true;
             }}}}
 
