@@ -1,4 +1,4 @@
-<h1><u><b><centre>📚Virtual Library Management System📚</b></u><br></h1></centre>
+<h1><u><b><centre>📚Virtual Library Management System📚</centre></b></u><br></h1>
 Welcome to the Virtual Library Management System! Our project is designed to modernize and streamline library operations, providing an efficient solution for managing resources, transactions, and insights. Leveraging the power of Java and flat file storage, our system offers a user-friendly interface and robust functionalities to enhance the library experience for both administrators and patrons.<br>
 <h2>🎁Features</h2>
 <h3>📕Book Management</h3>
