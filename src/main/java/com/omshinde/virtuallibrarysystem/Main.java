@@ -1,7 +1,7 @@
 package com.omshinde.virtuallibrarysystem;
 
 import com.omshinde.virtuallibrarysystem.models.Library;
-import java.util.Scanner;
+import com.omshinde.virtuallibrarysystem.utlis.ScannerUtils;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,7 +12,7 @@ public class Main {
 
         while (!exit) {
             showMainMenu();
-            int choice = getUserChoice();
+            int choice = ScannerUtils.getIntInput("Choose an option: ");
 
             switch (choice) {
                 case 1:
@@ -58,7 +58,6 @@ public class Main {
         System.out.println("📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📕📗📘📙📔📕📗📘");
         displayMainMenuOptions();
         System.out.println("------------------------------------------------------------------");
-        System.out.print("Choose an option: ");
     }
 
     private static void displayMainMenuOptions() {
@@ -67,11 +66,6 @@ public class Main {
         System.out.println("5. 💾 View Transaction Log      \t6. 👆 Upload Books");
         System.out.println("7. Books Statistics Overview    \t8. Analyzers");
         System.out.println("9. Exit");
-    }
-
-    private static int getUserChoice() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextInt();
     }
 
     private static void displayExitMessage() {
