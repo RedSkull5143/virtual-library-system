@@ -1,11 +1,14 @@
 package com.omshinde.virtuallibrarysystem;
 
 import com.omshinde.virtuallibrarysystem.models.Library;
+import com.omshinde.virtuallibrarysystem.operations.BookSearcher;
 import com.omshinde.virtuallibrarysystem.utlis.ScannerUtils;
 
 public class Main {
     public static void main(String[] args) {
         Library lib = new Library();
+        BookSearcher searcher = new BookSearcher(lib);
+
         boolean exit = false;
 
         displayWelcomeMessage();

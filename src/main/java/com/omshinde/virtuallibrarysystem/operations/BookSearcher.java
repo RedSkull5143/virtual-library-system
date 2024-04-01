@@ -11,14 +11,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BookSearcher {
-    private static Library library;
+    private static Library lib;
     private static Scanner sc=new Scanner(System.in);
     static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private BookLender borrow;
     private static List<Book> books;
 
     public BookSearcher(Library lib){
-        this.library=new Library();
+        this.lib=new Library();
         this.books=lib.books;
     }
 
@@ -95,7 +94,7 @@ public class BookSearcher {
                 System.out.println("Book Found in Library:");
                 Book foundBook = result.get(0);
                 System.out.println(foundBook.getTitle());
-                library.showStatus(foundBook);
+                lib.showStatus(foundBook);
             } else {
                 // Only prompt for filtering if there are multiple results
                 for (Book res : result) {
@@ -238,10 +237,10 @@ public class BookSearcher {
             int bookIndex = sc.nextInt();
             if (bookIndex > 0 && bookIndex <= result.size()) {
                 Book selectedBook = result.get(bookIndex - 1);
-                library.showStatus(selectedBook);
+                lib.showStatus(selectedBook);
                 return Collections.singletonList(selectedBook); // Return a list containing the selected book
             } else {
-                System.out.println("Invalid book selection.");
+                System.out.println("Invalid     book selection.");
                 return Collections.emptyList();
             }
 
