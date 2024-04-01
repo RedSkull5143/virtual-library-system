@@ -8,6 +8,7 @@ import java.util.List;
 
 public class BookStatisticsCalculator {
 
+
     public static int getTotalBooks(List<Book> books) {
         return books.size();
     }
@@ -42,12 +43,12 @@ public class BookStatisticsCalculator {
         return count;
     }
 
-    public static void displayLibraryStatistics(Library lib) {
+    public static void displayLibraryStatistics(List<Book> books,List<TransactionLog> log) {
         System.out.println("Library Statistics Overview:");
-        System.out.println("Total Books: " + getTotalBooks(lib.books));
-        System.out.println("Available Books: " + getAvailableBooks(lib.books));
-        System.out.println("Borrowed Books: " + getBorrowedBooks(lib.log));
-        System.out.println("Out of Stock Books: " + getOutOfStockBooks(lib.books));
+        System.out.println("Total Books: " + getTotalBooks(books));
+        System.out.println("Available Books: " + getAvailableBooks(books));
+        System.out.println("Borrowed Books: " + getBorrowedBooks(log));
+        System.out.println("Out of Stock Books: " + getOutOfStockBooks(books));
     }
 
     public static int calculateCurrentlyBorrowedBooksCount(List<TransactionLog> logs) {

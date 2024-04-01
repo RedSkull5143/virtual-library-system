@@ -1,13 +1,24 @@
 package com.omshinde.virtuallibrarysystem.models;
+import com.omshinde.virtuallibrarysystem.analyzers.BorrowingTrendAnalyzer;
+import com.omshinde.virtuallibrarysystem.analyzers.GenreTrendAnalyzer;
+import com.omshinde.virtuallibrarysystem.analyzers.MostBorrowedBooksAnalyzer;
+import com.omshinde.virtuallibrarysystem.analyzers.PopularAuthorAnalyzer;
 import com.omshinde.virtuallibrarysystem.isbn.ISBNChecker;
+import com.omshinde.virtuallibrarysystem.operations.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 public class Library {
 
     public  List<Book> books = new ArrayList<>();
     private ISBNChecker check = new ISBNChecker();
     public List<TransactionLog> log = new ArrayList<>();
+
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    Scanner sc = new Scanner(System.in);
+
 
     public Library() {
         this.books = new ArrayList<>();
@@ -45,33 +56,127 @@ public class Library {
     //-----------------------------------------------------------------------------------------------
 
     public void viewLog() {
-        if(books.isEmpty()){
-            System.err.println("Inventory is Empty. No logs present!");
-        }else{
         for (TransactionLog lg : log) {
-            String status = (lg.getReturned().equalsIgnoreCase("Yes") ? "Returned" : "Borrowed");
-            System.out.println("UserID : " + lg.getUserId() + ", ISBN : " + lg.getISBN() + ", Status: " + status + ", Borrow Date : " + lg.getBorrowDate() + ", Return Date : " + lg.getReturnDate());
+            System.out.println("UserID : " + lg.getUserId() + "," + "ISBN : " + lg.getISBN() + "," +"Borrowed : "+lg.getBorrowed()+","+ "Borrow Date : " + lg.getBorrowDate()
+                    +","+"Returned : "+lg.getReturned()+","+"Return Date : "+lg.getReturnDate());
         }
-    }}
+    }
 
     //----------------------------------------------------------------------------------------------------
 
 
     public void bookInventory() {
-        if(books.isEmpty()){
-            System.err.println("Inventory is Empty. Add Books");
-        }else{
         for (Book bk : books) {
             System.out.println("Title : " + bk.getTitle() +" , "+ "No of copies : " + bk.getNoOfCopies());
-        }}
+        }
     }
 
-    public List<Book> getBooks() {
-        return books;
+    public void searchBook(){
+        BookSearcher.search();
     }
 
-    public List<TransactionLog> getLog() {
-        return log;
+    public void borrowBook()
+    {
+        BookLender.borrowByISBN(books,log);
+    }
+
+
+    public void returnBook(){
+        BookReturner.ReturnBook(books,log);
+    }
+
+    public void UploadBook(String path){
+        BookUploader upload=new BookUploader();
+        upload.uploadBook(path,books);
+    }
+
+    public void showStatistics(){
+        while (true) {
+            System.out.println("\nBooks Statistics Overview:");
+            System.out.println("1. Show All Books ");
+            System.out.println("2. Total No. of Books Present");
+            System.out.println("3. Number of currently borrowed books");
+            System.out.println("4. List of titles of all borrowed books");
+            System.out.println("5. Back to Main Menu");
+            System.out.print("Choose an option: ");
+            int statsChoice = sc.nextInt();
+
+            switch (statsChoice) {
+                case 1:
+                    BookStatisticsCalculator.displayLibraryStatistics(books,log);
+                    break;
+                case 2:
+                    System.out.println("Total number of books present: " + BookStatisticsCalculator.getTotalBooks(books));
+                    break;
+                case 3:
+                    System.out.println("Number of currently borrowed books: " + BookStatisticsCalculator.calculateCurrentlyBorrowedBooksCount(log));
+                    break;
+                case 4:
+                    System.out.println("List of titles of all borrowed books:");
+                    List<String> borrowedTitles = BookStatisticsCalculator.getAllBorrowedBookTitles(log,books);
+                    for (String title : borrowedTitles) {
+                        System.out.println(title);
+                    }
+                    break;
+                case 5:
+                    break;
+                default:
+                    System.out.println("Invalid selection. Please try again.");
+                    break;
+            }
+
+            if (statsChoice == 5)
+                break;
+        }
+
+    }
+
+    public void analyzer(){
+        while (true) {
+            System.out.println("\nAnalyzers:");
+            System.out.println("1. Analyze Borrowing Trends per Month");
+            System.out.println("2. Analyze Borrowing Trends per Quarter");
+            System.out.println("3. Analyze Borrowing Trends per Year");
+            System.out.println("4. Analyze Trending Genres");
+            System.out.println("5. Analyze Trending Authors");
+            System.out.println("6. Analyze Most Popular Book");
+            System.out.println("7. Back to Main Menu");
+            System.out.print("Choose an option: ");
+            int analyzerChoice = sc.nextInt();
+
+            switch (analyzerChoice) {
+                case 1:
+                    BorrowingTrendAnalyzer.analyzeBorrowingTrendsPerMonth(log);
+                    break;
+                case 2:
+                    BorrowingTrendAnalyzer.analyzeBorrowingTrendsPerQuarter(log);
+                    break;
+                case 3:
+                    System.out.println("Enter the year to analyze : ");
+                    int year=sc.nextInt();
+                    BorrowingTrendAnalyzer.analyzeBorrowingTrendsPerYear(log, year);
+                    break;
+                case 4:
+                    GenreTrendAnalyzer.analyzeGenreTrends(books, log);
+                    break;
+                case 5:
+                    PopularAuthorAnalyzer.analyzeAuthorTrends(books,log);
+                    break;
+                case 6:
+                    System.out.println("Display Top - ");
+                    int limit = sc.nextInt();
+                    MostBorrowedBooksAnalyzer.MostBorrowedAnalyzer(books,log, limit);
+                    break;
+                case 7:
+                    break;
+                default:
+                    System.out.println("Invalid selection. Please try again.");
+                    break;
+            }
+
+            if (analyzerChoice == 7)
+                break;
+        }
     }
 
 }

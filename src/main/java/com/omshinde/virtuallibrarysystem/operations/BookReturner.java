@@ -1,7 +1,5 @@
 package com.omshinde.virtuallibrarysystem.operations;
 
-import com.omshinde.virtuallibrarysystem.analyzers.PopularAuthorAnalyzer;
-import com.omshinde.virtuallibrarysystem.analyzers.GenreTrendAnalyzer;
 import com.omshinde.virtuallibrarysystem.models.TransactionLog;
 import com.omshinde.virtuallibrarysystem.models.Book;
 import com.omshinde.virtuallibrarysystem.models.Library;
@@ -12,19 +10,13 @@ import java.util.Scanner;
 
 public class BookReturner {
 
+//    private Library library;
+//    private TransactionLog lg;
 
-    private final Library library;
-    List<TransactionLog> log;
-    List<Book> books;
-    Scanner sc = new Scanner(System.in);
+    static Scanner sc = new Scanner(System.in);
 
-    public BookReturner(Library lib) {
-        this.library = lib;
-        this.log = lib.log;
-        this.books = lib.books;
-    }
 
-    public void ReturnBook() {
+    public static void ReturnBook(List<Book> books,List<TransactionLog> log) {
         System.out.println("Enter your UserID to return the book: ");
         int UserID = sc.nextInt();
         System.out.println("Enter ISBN of the Book you want to return: ");
@@ -33,7 +25,9 @@ public class BookReturner {
         boolean flag = false;
         for (TransactionLog l : log) {
             if (l.getUserId() == UserID && l.getISBN().equalsIgnoreCase(isbn)) {
+
                 for (Book bk : books) {
+
                     if (bk.getISBN().equalsIgnoreCase(isbn)) {
                         System.out.println("The book you want to return is : " + bk.getTitle());
                         System.out.println("Confirm to proceed(Y/N) :");
@@ -45,22 +39,24 @@ public class BookReturner {
                             }
                             l.setReturned("Yes");
                             l.setReturnDate(LocalDate.now());
-                            GenreTrendAnalyzer.analyzeGenreTrends(library, library.getLog());
-                            PopularAuthorAnalyzer.analyzeAuthorTrends(library,library.getLog());
+
                             flag = true;
-                            System.out.println("Book returned successfully");
                         } else {
                             System.out.println("Thank You");
-                            return; // Return to main menu
+                            System.exit(0);
                         }
                     }
                 }
+
+            }
+            if (flag) {
+                System.out.println("Book returned succesfully");
+
+            } else {
+                System.out.println("No log record Exists");
             }
         }
-        if (!flag) {
-            System.out.println("No log record Exists");
-        }
-    }
 
+    }
 
 }

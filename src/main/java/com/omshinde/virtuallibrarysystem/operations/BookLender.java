@@ -11,21 +11,12 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BookLender {
-    private final Library library;
-    private final Scanner sc=new Scanner(System.in);
-
-    List<Book> books;
-    public BookLender(Library lib){
-        this.library=lib;
-        this.books=lib.books;
-     }
+    private static Library library=new Library();
+    private static Scanner sc=new Scanner(System.in);
 
 
-    public void borrowByISBN() {
-        if(books.isEmpty()){
-            System.out.println("Books not available. First add Book to Borrow");
-        }else{
 
+    public static void borrowByISBN(List<Book> books,List<TransactionLog> log) {
         System.out.println("Enter the ISBN of book to borrow: ");
         String isbn = sc.next();
         Book book = BookSearcher.searchByISBN(isbn,books).stream().findFirst().orElse(null);
@@ -46,14 +37,12 @@ public class BookLender {
                     System.out.println("Enter your UserId to borrow the book: ");
                     int UserId = sc.nextInt();
 
-                    OverdueNotification(UserId,book); // notify if overdue
+                    OverdueNotification(UserId,book,log); // notify if overdue
 
-                    library.log.add(new TransactionLog(UserId, isbn,"yes", LocalDate.now(),"No",null));
+                    log.add(new TransactionLog(UserId, isbn,"yes", LocalDate.now(),"No",null));
 
 
                     System.out.println("The book has been borrowed");
-                    GenreTrendAnalyzer.analyzeGenreTrends(library, library.getLog());
-                    PopularAuthorAnalyzer.analyzeAuthorTrends(library,library.getLog());
 
                     book.setNoOfCopies(book.getNoOfCopies() - 1);
                     if (book.getNoOfCopies() < 1) {
@@ -69,10 +58,10 @@ public class BookLender {
         } else {
             System.out.println("Book with given ISBN not found");
         }
-    }}
+    }
 
-    public void OverdueNotification(int UserId,Book book){
-        for(TransactionLog lg: library.log){
+    public static void OverdueNotification(int UserId, Book book, List<TransactionLog> log){
+        for(TransactionLog lg: log){
             if(lg.getUserId()==UserId && lg.getReturned().equalsIgnoreCase("No") && lg.getBorrowDate().isBefore(LocalDate.now().minusMonths(3))){
                 System.out.println("Before borrowing new book we kindly notify that you have previously borrowed the book "+book.getTitle()+"\n"
                         +"It already have been overdue so please return the book otherwise the library will charge you. ");
@@ -86,7 +75,7 @@ public class BookLender {
 
 
 
-    private void provideNavigationOptions() {
+    private static void provideNavigationOptions() {
         int option;
         do {
             System.out.println("Please select an option:");
@@ -97,6 +86,7 @@ public class BookLender {
 
             switch (option) {
                 case 1:
+                    // logic to return to main menu
                     break;
                 case 2:
                     BookSearcher.search();

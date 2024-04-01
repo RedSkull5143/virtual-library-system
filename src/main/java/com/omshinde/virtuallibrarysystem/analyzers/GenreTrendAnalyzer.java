@@ -11,13 +11,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class GenreTrendAnalyzer {
-
-    public static void analyzeGenreTrends(Library library, List<TransactionLog> logs) {
-        if (logs.isEmpty()) {
-            System.out.println("No logs present to analyze");
-            return;
-        }
-        Map<String, Integer> genrePopularity = calculateGenrePopularity(library.getBooks(), logs);
+    public static void analyzeGenreTrends(List<Book> books, List<TransactionLog> logs) {
+        Map<String, Integer> genrePopularity = calculateGenrePopularity(books, logs);
         printGenrePopularity(genrePopularity);
     }
 

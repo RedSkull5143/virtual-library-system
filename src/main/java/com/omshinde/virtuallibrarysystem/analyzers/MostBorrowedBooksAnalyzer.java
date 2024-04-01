@@ -8,11 +8,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class MostBorrowedBooksAnalyzer {
-
-    public static void analyzeMostBorrowedBooks(Library library, int limit) {
-        List<TransactionLog> logs = library.getLog();
-        List<Book> books = library.getBooks();
-
+    public static void MostBorrowedAnalyzer(List<Book> books,List<TransactionLog>logs, int limit) {
         if (logs.isEmpty() || books.isEmpty()) {
             System.out.println("No transaction logs or books found. Cannot analyze most borrowed books.");
             return;

@@ -1,7 +1,6 @@
 package com.omshinde.virtuallibrarysystem.analyzers;
-import com.omshinde.virtuallibrarysystem.models.Library;
-import com.omshinde.virtuallibrarysystem.models.TransactionLog;
 
+import com.omshinde.virtuallibrarysystem.models.TransactionLog;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
@@ -10,10 +9,10 @@ import java.util.TreeMap;
 
 public class BorrowingTrendAnalyzer {
 
-    public static void analyzeBorrowingTrendsPerMonth(Library library) {
-        List<TransactionLog> transactionLogs = library.getLog();
+    public static void analyzeBorrowingTrendsPerMonth(List<TransactionLog> log) {
 
-        if (transactionLogs.isEmpty()) {
+
+        if (log.isEmpty()) {
             System.out.println("No transaction logs found. Cannot analyze borrowing trends.");
             return;
         }
@@ -25,9 +24,9 @@ public class BorrowingTrendAnalyzer {
         int[] borrowingCounts = new int[12];
 
         // Loop through transaction logs and count borrowings for each month
-        for (TransactionLog log : transactionLogs) {
-            if (log.getReturned().equalsIgnoreCase("No") && log.getBorrowDate().getYear() == currentYear) {
-                int monthIndex = log.getBorrowDate().getMonthValue() - 1; // Month index starts from 0
+        for (TransactionLog lg :log) {
+            if (lg.getReturned().equalsIgnoreCase("No") && lg.getBorrowDate().getYear() == currentYear) {
+                int monthIndex = lg.getBorrowDate().getMonthValue() - 1; // Month index starts from 0
                 borrowingCounts[monthIndex]++;
             }
         }
@@ -43,10 +42,10 @@ public class BorrowingTrendAnalyzer {
         }
     }
 
-    public static void analyzeBorrowingTrendsPerQuarter(Library library) {
-        List<TransactionLog> transactionLogs = library.getLog();
+    public static void analyzeBorrowingTrendsPerQuarter(List<TransactionLog> log) {
 
-        if (transactionLogs.isEmpty()) {
+
+        if (log.isEmpty()) {
             System.out.println("No transaction logs found. Cannot analyze borrowing trends.");
             return;
         }
@@ -58,9 +57,9 @@ public class BorrowingTrendAnalyzer {
         Map<Integer, Integer> quarterBorrowingCounts = new TreeMap<>();
 
         // Loop through transaction logs and count borrowings for each quarter
-        for (TransactionLog log : transactionLogs) {
-            if (log.getReturned().equalsIgnoreCase("No") && log.getBorrowDate().getYear() == currentYear) {
-                int month = log.getBorrowDate().getMonthValue();
+        for (TransactionLog lg : log) {
+            if (lg.getReturned().equalsIgnoreCase("No") && lg.getBorrowDate().getYear() == currentYear) {
+                int month = lg.getBorrowDate().getMonthValue();
                 int quarter = (month - 1) / 3 + 1; // Determine quarter based on month
                 quarterBorrowingCounts.put(quarter, quarterBorrowingCounts.getOrDefault(quarter, 0) + 1);
             }
@@ -72,10 +71,10 @@ public class BorrowingTrendAnalyzer {
                 System.out.println("Quarter " + quarter + ": " + count + " books borrowed"));
     }
 
-    public static void analyzeBorrowingTrendsPerYear(Library library, int year) {
-        List<TransactionLog> transactionLogs = library.getLog();
+    public static void analyzeBorrowingTrendsPerYear(List<TransactionLog> log, int year) {
 
-        if (transactionLogs.isEmpty()) {
+
+        if (log.isEmpty()) {
             System.out.println("No transaction logs found. Cannot analyze borrowing trends.");
             return;
         }
@@ -84,9 +83,9 @@ public class BorrowingTrendAnalyzer {
         Map<Month, Integer> borrowingCounts = new TreeMap<>();
 
         // Loop through transaction logs and count borrowings for each month of the specified year
-        for (TransactionLog log : transactionLogs) {
-            if (log.getReturned().equalsIgnoreCase("No") && log.getBorrowDate().getYear() == year) {
-                Month month = log.getBorrowDate().getMonth();
+        for (TransactionLog lg : log) {
+            if (lg.getReturned().equalsIgnoreCase("No") && lg.getBorrowDate().getYear() == year) {
+                Month month = lg.getBorrowDate().getMonth();
                 borrowingCounts.put(month, borrowingCounts.getOrDefault(month, 0) + 1);
             }
         }

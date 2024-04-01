@@ -14,11 +14,12 @@ public class BookSearcher {
     private static Library library;
     private static Scanner sc=new Scanner(System.in);
     static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private BookLender borrow;
     private static List<Book> books;
 
-    public BookSearcher(Library library){
-        this.library=library;
-        books=library.books;
+    public BookSearcher(Library lib){
+        this.library=new Library();
+        this.books=lib.books;
     }
 
 
@@ -59,7 +60,7 @@ public class BookSearcher {
                     System.out.println("Enter the ISBN of Book :");
                     sc.nextLine();
                     String isbn = sc.nextLine();
-                    result = searchByISBN(isbn, library.books);
+                    result = searchByISBN(isbn, books);
                     break;
 
                 case 4:
@@ -247,5 +248,4 @@ public class BookSearcher {
         }
         return result;
     }
-
 }
