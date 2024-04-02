@@ -1,7 +1,5 @@
 package com.omshinde.virtuallibrarysystem.operations;
 
-import com.omshinde.virtuallibrarysystem.analyzers.PopularAuthorAnalyzer;
-import com.omshinde.virtuallibrarysystem.analyzers.GenreTrendAnalyzer;
 import com.omshinde.virtuallibrarysystem.models.Book;
 import com.omshinde.virtuallibrarysystem.models.Library;
 import com.omshinde.virtuallibrarysystem.models.TransactionLog;
@@ -89,7 +87,7 @@ public class BookLender {
                     // logic to return to main menu
                     break;
                 case 2:
-                    BookSearcher.search();
+                    BookSearcher.search(library.books);
                     break;
                 case 3:
                     System.out.println("Exiting system. Thank you for using our library!");

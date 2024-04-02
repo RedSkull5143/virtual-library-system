@@ -11,19 +11,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BookSearcher {
-    private static Library lib;
+    private static Library lib=new Library();
     private static Scanner sc=new Scanner(System.in);
     static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private static List<Book> books;
 
-    public BookSearcher(Library lib){
-        this.lib=new Library();
-        this.books=lib.books;
-    }
-
-
-
-    public static void search() {
+    public static void search(List<Book> books) {
 
         List<Book> result = new ArrayList<>();
         if (books.isEmpty()) {

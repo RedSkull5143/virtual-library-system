@@ -72,7 +72,7 @@ public class Library {
     }
 
     public void searchBook(){
-        BookSearcher.search();
+        BookSearcher.search(books);
     }
 
     public void borrowBook()

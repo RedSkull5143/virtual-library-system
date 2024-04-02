@@ -2,7 +2,6 @@ package com.omshinde.virtuallibrarysystem;
 
 import com.omshinde.virtuallibrarysystem.commands.*;
 import com.omshinde.virtuallibrarysystem.models.Library;
-import com.omshinde.virtuallibrarysystem.operations.BookSearcher;
 import com.omshinde.virtuallibrarysystem.utlis.ScannerUtils;
 
 import java.util.HashMap;
@@ -11,7 +10,6 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         Library lib = new Library();
-        BookSearcher searcher = new BookSearcher(lib);
 
         displayWelcomeMessage();
 
