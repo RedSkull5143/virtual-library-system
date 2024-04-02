@@ -15,9 +15,9 @@ public class Main {
 
         displayWelcomeMessage();
 
-        Map<Integer, Command> commands=new HashMap<>();
+        Map<Integer, Command> commands = new HashMap<>();
         commands.put(1, new SearchBookCommand());
-        commands.put(2,new BorrowBookCommand());
+        commands.put(2, new BorrowBookCommand());
         commands.put(3, new ReturnBookCommand());
         commands.put(4, new BookInventoryCommand());
         commands.put(5, new ViewLogCommand());
@@ -27,7 +27,7 @@ public class Main {
 
         int choice;
 
-        while(true) {
+        while (true) {
             showMainMenu();
             choice = ScannerUtils.getIntInput("Choose an option: ");
 
@@ -45,42 +45,6 @@ public class Main {
             }
         }
 
-//        while (!exit) {
-//            showMainMenu();
-//
-//            switch (choice) {
-//                case 1:
-//                    lib.searchBook();
-//                    break;
-//                case 2:
-//                    lib.borrowBook();
-//                    break;
-//                case 3:
-//                    lib.returnBook();
-//                    break;
-//                case 4:
-//                    lib.bookInventory();
-//                    break;
-//                case 5:
-//                    lib.viewLog();
-//                    break;
-//                case 6:
-//                    lib.UploadBook("src/main/resources/dataset.csv");
-//                    break;
-//                case 7:
-//                    lib.showStatistics();
-//                    break;
-//                case 8:
-//                    lib.analyzer();
-//                    break;
-//                case 9:
-//                    displayExitMessage();
-//                    exit = true;
-//                    break;
-//                default:
-//                    System.out.println("Invalid choice. Please enter a number between 1 and 9.");
-//            }
-//        }
     }
 
     private static void displayWelcomeMessage() {
