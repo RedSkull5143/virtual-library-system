@@ -1,55 +1,86 @@
 package com.omshinde.virtuallibrarysystem;
 
+import com.omshinde.virtuallibrarysystem.commands.*;
 import com.omshinde.virtuallibrarysystem.models.Library;
 import com.omshinde.virtuallibrarysystem.operations.BookSearcher;
 import com.omshinde.virtuallibrarysystem.utlis.ScannerUtils;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
         Library lib = new Library();
         BookSearcher searcher = new BookSearcher(lib);
 
-        boolean exit = false;
-
         displayWelcomeMessage();
 
-        while (!exit) {
-            showMainMenu();
-            int choice = ScannerUtils.getIntInput("Choose an option: ");
+        Map<Integer, Command> commands=new HashMap<>();
+        commands.put(1, new SearchBookCommand());
+        commands.put(2,new BorrowBookCommand());
+        commands.put(3, new ReturnBookCommand());
+        commands.put(4, new BookInventoryCommand());
+        commands.put(5, new ViewLogCommand());
+        commands.put(6, new UploadBookCommand());
+        commands.put(7, new ShowStatisticsCommand());
+        commands.put(8, new AnalyzersCommand());
 
-            switch (choice) {
-                case 1:
-                    lib.searchBook();
-                    break;
-                case 2:
-                    lib.borrowBook();
-                    break;
-                case 3:
-                    lib.returnBook();
-                    break;
-                case 4:
-                    lib.bookInventory();
-                    break;
-                case 5:
-                    lib.viewLog();
-                    break;
-                case 6:
-                    lib.UploadBook("src/main/resources/dataset.csv");
-                    break;
-                case 7:
-                    lib.showStatistics();
-                    break;
-                case 8:
-                    lib.analyzer();
-                    break;
-                case 9:
-                    displayExitMessage();
-                    exit = true;
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please enter a number between 1 and 9.");
+        int choice;
+
+        while(true) {
+            showMainMenu();
+            choice = ScannerUtils.getIntInput("Choose an option: ");
+
+            if (choice == 9) {
+                displayExitMessage();
+                break;
+            }
+
+
+            Command command = commands.get(choice);
+            if (command != null) {
+                command.execute(lib);
+            } else {
+                System.out.println("Invalid Choice");
             }
         }
+
+//        while (!exit) {
+//            showMainMenu();
+//
+//            switch (choice) {
+//                case 1:
+//                    lib.searchBook();
+//                    break;
+//                case 2:
+//                    lib.borrowBook();
+//                    break;
+//                case 3:
+//                    lib.returnBook();
+//                    break;
+//                case 4:
+//                    lib.bookInventory();
+//                    break;
+//                case 5:
+//                    lib.viewLog();
+//                    break;
+//                case 6:
+//                    lib.UploadBook("src/main/resources/dataset.csv");
+//                    break;
+//                case 7:
+//                    lib.showStatistics();
+//                    break;
+//                case 8:
+//                    lib.analyzer();
+//                    break;
+//                case 9:
+//                    displayExitMessage();
+//                    exit = true;
+//                    break;
+//                default:
+//                    System.out.println("Invalid choice. Please enter a number between 1 and 9.");
+//            }
+//        }
     }
 
     private static void displayWelcomeMessage() {
