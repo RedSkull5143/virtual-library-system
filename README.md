@@ -15,7 +15,7 @@ Welcome to the Virtual Library Management System! Our project is designed to mod
   
 </ul>
 
-<h4>Core Language: Java</h4>
+<h4>Core Language: Java (Version 20) </h4>
 <h4>Data Storage: Use flat file storage (e.g., **`.txt`** or **`.csv`**) for storing book details and borrow logs.<h4>
 
 <h2>🎁Features</h2>
