@@ -8,7 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
-    public static void main(String[] args) {
+    private ScannerUtils scannerUtils;
+    public void main(String[] args) {
         Library lib = new Library();
 
         displayWelcomeMessage();
@@ -27,7 +28,7 @@ public class Main {
 
         while (true) {
             showMainMenu();
-            choice = ScannerUtils.getIntInput("Choose an option: ");
+            choice = scannerUtils.getIntInput("Choose an option: ");
 
             if (choice == 9) {
                 displayExitMessage();

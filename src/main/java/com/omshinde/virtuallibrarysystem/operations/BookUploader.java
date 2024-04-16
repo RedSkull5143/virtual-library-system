@@ -17,9 +17,6 @@ public class BookUploader {
     private int booksSkipped = 0;
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private final ISBNChecker check=new ISBNChecker();
-//    private final Library library;
-
-
 
     public void uploadBook(String FILE_PATH, List<Book> books) {
         try {
