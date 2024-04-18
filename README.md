@@ -1,50 +1,50 @@
-<h1><u><b><centre>📚Virtual Library Management System📚</centre></b></u><br></h1>
-Welcome to the Virtual Library Management System! Our project is designed to modernize and streamline library operations, providing an efficient solution for managing resources, transactions, and insights. Leveraging the power of Java and flat file storage, our system offers a user-friendly interface and robust functionalities to enhance the library experience for both administrators and patrons.<br>
-<h2>🎁Features</h2>
-<h3>📕Book Management</h3>
-<ul>
-  <h4>➕ Add Books ➕</h4>
-  <li>Allow the addition of new books to the library's inventory.</li>
-  <li>Capture essential details: Title , Author , ISBN , Genre , Publication Date , and Number of Copies.</li>
-  <li>Ensure that the ISBN is Unique, acting as a Primary Identifier for each book.</li>
-  <li>Allow batch uploads where multiple books can be added at once, perhaps from a CSV or similar file format.</li>
+# 📚 Virtual Library Management System 📚
 
-  <h4>🔍 Search & View Books 🔍</h4>
-  <li>Provide a Search Functionality using various Criteria like Title , Author or ISBN.</li>
-  <li>Display Detailed views of Individual Books, showing all their attributes and current availability.</li>
-</ul>
+Welcome to the Virtual Library Management System! Our project is designed to modernize and streamline library operations, providing an efficient solution for managing resources, transactions, and insights. Leveraging the power of Java and flat file storage, our system offers a user-friendly interface and robust functionalities to enhance the library experience for both administrators and patrons.
 
-<h3>🖥Transaction Management</h3>
-<ul>
-  <h4>📥 Borrow Books 📥</h4>
-  <li>Facilitate the Borrowing process using a book's ISBN.</li>
-  <li>Log Details of the Borrowing Transaction, including the userID and Date of Borrowing.</li>
-  <li>Update the inventory to reflect the decreased count of available copies.</li>
-  <li>Ensure an error prompt if a user tries to borrow a book that's currently unavailable.</li>
-  <li>Allow the addition of new books to the library's inventory.</li>
+## 💻 Tech Stack 🗃
+- **Core Language:** Java (Version 20)
+- **Data Storage:** Use flat file storage (e.g., `.txt` or `.csv`) for storing book details and borrow logs.
 
-  <h4>📤 Return Books 📤</h4>
-  <li>Accommodate the return process using the book's ISBN and user ID.</li>
-  <li>Record the return transaction details, including the exact date of return.</li>
-  <li>Update the inventory to restore the count of the book's available copies.</li>
-  <li>Implement a system to manage and notify overdue returns.</li>
-</ul>
+## 💻 SetUp 🗃
+1. **Install JDK:** Ensure you have Java Development Kit (JDK) version 20 installed on your machine.
+2. **Clone the Repository:** `git clone https://github.com/RedSkull5143/virtual-library-system`
+3. **Run Project Locally:**
+    - **Compile:** `javac VirtualLibrarySystem.java`
+    - **Run:** `java VirtualLibrarySystem`
 
-<h3>🖥Insights and Analytics</h3>
-<ul>
-  <h4>📊 Library Statistics 📊</h4>
-  <li>Display a dashboard or report summary of the library's vital statistics.</li>
-  <li>Offer a real-time count of the total books in the library.</li>
-  <li>Showcase the number of books currently borrowed and their respective titles.</li>
-  <li>Highlight the most popular books, ranked by their borrow count over a specified period.</li>
+## 🎁 Features
+### 📕 Book Management
+- **➕ Add Books ➕**
+    - Allow the addition of new books to the library's inventory.
+    - Capture essential details: Title, Author, ISBN, Genre, Publication Date, and Number of Copies.
+    - Ensure that the ISBN is Unique, acting as a Primary Identifier for each book.
+    - Allow batch uploads where multiple books can be added at once, perhaps from a CSV or similar file format.
 
-  <h4>📈 Trend Analysis 📉</h4>
-  <li>Feature insights on borrowing trends over time, indicating peak borrowing periods or seasonal preferences.</li>
-  <li>Illustrate the genres or authors that are currently in Demand and Aiding in future procurement decisions.</li>
-  <li>Update the inventory to restore the count of the book's available copies.</li>
-  <li>Implement a system to manage and notify overdue returns.</li>
-</ul>
+- **🔍 Search & View Books 🔍**
+    - Provide a Search Functionality using various Criteria like Title, Author, or ISBN.
+    - Display Detailed views of Individual Books, showing all their attributes and current availability.
 
-<h2><u>💻 Tech Stack 🗃</u></h2>
-  <h4>Core Language: Java</h4>
-  <h4>Data Storage: Use flat file storage (e.g., **`.txt`** or **`.csv`**) for storing book details and borrow logs.<h4>
+### 🖥 Transaction Management
+- **📥 Borrow Books 📥**
+    - Facilitate the Borrowing process using a book's ISBN.
+    - Log Details of the Borrowing Transaction, including the userID and Date of Borrowing.
+    - Update the inventory to reflect the decreased count of available copies.
+    - Ensure an error prompt if a user tries to borrow a book that's currently unavailable.
+
+- **📤 Return Books 📤**
+    - Accommodate the return process using the book's ISBN and user ID.
+    - Record the return transaction details, including the exact date of return.
+    - Update the inventory to restore the count of the book's available copies.
+    - Implement a system to manage and notify overdue returns.
+
+### 📊 Insights and Analytics
+- **📊 Library Statistics 📊**
+    - Display a dashboard or report summary of the library's vital statistics.
+    - Offer a real-time count of the total books in the library.
+    - Showcase the number of books currently borrowed and their respective titles.
+    - Highlight the most popular books, ranked by their borrow count over a specified period.
+
+- **📈 Trend Analysis 📉**
+    - Feature insights on borrowing trends over time, indicating peak borrowing periods or seasonal preferences.
+    - Illustrate the genres or authors that are currently in Demand and Aiding in future procurement decisions.
