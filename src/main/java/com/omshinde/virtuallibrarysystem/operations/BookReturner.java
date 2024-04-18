@@ -9,14 +9,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BookReturner {
-
-//    private Library library;
-//    private TransactionLog lg;
-
-    static Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
 
 
-    public static void ReturnBook(List<Book> books,List<TransactionLog> log) {
+    public void ReturnBook(List<Book> books,List<TransactionLog> log) {
         System.out.println("Enter your UserID to return the book: ");
         int UserID = sc.nextInt();
         System.out.println("Enter ISBN of the Book you want to return: ");

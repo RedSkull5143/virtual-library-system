@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BookSearcher {
-    private static Library lib=new Library();
-    private static Scanner sc=new Scanner(System.in);
+    private Library lib=new Library();
+    private Scanner sc=new Scanner(System.in);
     static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-    public static void search(List<Book> books) {
+    public void search(List<Book> books) {
 
         List<Book> result = new ArrayList<>();
         if (books.isEmpty()) {
@@ -102,7 +102,7 @@ public class BookSearcher {
         }
     }
 
-    public static List<Book> searchByTitle(String title, List<Book> books) {
+    public List<Book> searchByTitle(String title, List<Book> books) {
         List<Book> result = new ArrayList<>();
         for (Book book : books) {
             if (book.getTitle().equalsIgnoreCase(title)) {
@@ -112,7 +112,7 @@ public class BookSearcher {
         return result;
     }
 
-    public static List<Book> searchByAuthor(String author, List<Book> books) {
+    public List<Book> searchByAuthor(String author, List<Book> books) {
         List<Book> result = new ArrayList<>();
         for (Book book : books) {
             if (book.getAuthor().equalsIgnoreCase(author)) {
@@ -122,7 +122,7 @@ public class BookSearcher {
         return result;
     }
 
-    public static List<Book> searchByGenre(String Genre, List<Book> books) {
+    public List<Book> searchByGenre(String Genre, List<Book> books) {
         List<Book> result = new ArrayList<>();
         for (Book book : books) {
             if (book.getGenre().equalsIgnoreCase(Genre)) {
@@ -132,7 +132,7 @@ public class BookSearcher {
         return result;
     }
 
-    public static List<Book> searchByISBN(String isbn, List<Book> books) {
+    public List<Book> searchByISBN(String isbn, List<Book> books) {
         List<Book> result = new ArrayList<>();
         for (Book book : books) {
             if (book.getISBN().equalsIgnoreCase(isbn)) {
@@ -142,7 +142,7 @@ public class BookSearcher {
         return result;
     }
 
-    public static List<Book> searchByDate(LocalDate date, List<Book> books) {
+    public List<Book> searchByDate(LocalDate date, List<Book> books) {
         List<Book> result = new ArrayList<>();
         for (Book book : books) {
             if (book.getPublication_Date().isEqual(date)) {
@@ -152,7 +152,7 @@ public class BookSearcher {
         return result;
     }
 
-    public static List<Book> searchByCopies(int copies, List<Book> books) {
+    public List<Book> searchByCopies(int copies, List<Book> books) {
         List<Book> result = new ArrayList<>();
         for (Book book : books) {
             if (book.getNoOfCopies() == copies) {
@@ -162,7 +162,7 @@ public class BookSearcher {
         return result;
     }
 
-    public static List<Book> addfilter(List<Book> result) {
+    public List<Book> addfilter(List<Book> result) {
         System.out.println("Do you want to Filter the result(Y/N) ?:");
         String ch = sc.next();
         if (!ch.equalsIgnoreCase("y")) {

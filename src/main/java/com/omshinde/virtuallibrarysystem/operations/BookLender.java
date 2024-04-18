@@ -9,15 +9,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BookLender {
-    private static Library library=new Library();
-    private static Scanner sc=new Scanner(System.in);
+    private Library library=new Library();
+    private Scanner sc=new Scanner(System.in);
+    private BookSearcher bookSearcher;
 
 
 
-    public static void borrowByISBN(List<Book> books,List<TransactionLog> log) {
+    public void borrowByISBN(List<Book> books,List<TransactionLog> log) {
         System.out.println("Enter the ISBN of book to borrow: ");
         String isbn = sc.next();
-        Book book = BookSearcher.searchByISBN(isbn,books).stream().findFirst().orElse(null);
+        Book book = bookSearcher.searchByISBN(isbn,books).stream().findFirst().orElse(null);
         if (book != null) {
             System.out.println("the book you have selected is : " + book.getTitle());
             library.showStatus(book);
@@ -58,7 +59,7 @@ public class BookLender {
         }
     }
 
-    public static void OverdueNotification(int UserId, Book book, List<TransactionLog> log){
+    public void OverdueNotification(int UserId, Book book, List<TransactionLog> log){
         for(TransactionLog lg: log){
             if(lg.getUserId()==UserId && lg.getReturned().equalsIgnoreCase("No") && lg.getBorrowDate().isBefore(LocalDate.now().minusMonths(3))){
                 System.out.println("Before borrowing new book we kindly notify that you have previously borrowed the book "+book.getTitle()+"\n"
@@ -73,7 +74,7 @@ public class BookLender {
 
 
 
-    private static void provideNavigationOptions() {
+    private void provideNavigationOptions() {
         int option;
         do {
             System.out.println("Please select an option:");
@@ -87,7 +88,7 @@ public class BookLender {
                     // logic to return to main menu
                     break;
                 case 2:
-                    BookSearcher.search(library.books);
+                    bookSearcher.search(library.books);
                     break;
                 case 3:
                     System.out.println("Exiting system. Thank you for using our library!");
